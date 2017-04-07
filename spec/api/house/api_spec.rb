@@ -6,10 +6,11 @@ describe House::API, type: :request do
     let(:region_name) { 'Aberdeenshire' }
     let(:index) { 58.35313548 }
 
-    it '' do
+    it 'creates a new house price index' do
       post '/hpi', params: { date: date, region_name: region_name, index: index }
 
       expect(response.status).to eq(201)
+      expect(HousePriceIndex.count).to eq(1)
     end
   end
 end
