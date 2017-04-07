@@ -17,5 +17,10 @@ module House
     get '/hpi' do
       { hpi_count: HousePriceIndex.count }
     end
+
+    desc 'List of unique regions'
+    get '/regions' do
+      { regions: HousePriceIndex.uniq_regions }
+    end
   end
 end

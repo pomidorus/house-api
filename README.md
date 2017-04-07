@@ -3,7 +3,7 @@
 ## Staging
 https://house-api-test.herokuapp.com/
 
-## Endpoints
+## API Endpoints
 
 - POST /hpi
 
