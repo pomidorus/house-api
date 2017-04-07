@@ -9,7 +9,13 @@ module House
       requires :index, type: Float, desc: 'House price index value'
     end
     post '/hpi' do
+      # find or create...
       HousePriceIndex.create!(date: params[:date], region_name: params[:region_name], index: params[:index])
+    end
+
+    desc 'House price indexes total count'
+    get '/hpi' do
+      HousePriceIndex.count
     end
   end
 end
