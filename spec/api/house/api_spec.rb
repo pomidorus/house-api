@@ -5,6 +5,10 @@ describe House::API, type: :request do
   let(:region_name) { 'Aberdeenshire' }
   let(:index) { 58.35313548 }
 
+  describe 'GET /regions' do
+    
+  end
+  
   describe 'GET /hpi/count' do
     let!(:hpi) { HousePriceIndex.create(date: date, region_name: region_name, index: index) }
 

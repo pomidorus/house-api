@@ -3,6 +3,9 @@
 ## Staging
 https://house-api-test.herokuapp.com/
 
+heroku run --app house-api-test rake db:migrate
+
+
 ## API Endpoints
 
 - POST /hpi
