@@ -5,7 +5,11 @@ class HousePriceIndex < ApplicationRecord
     distinct.pluck(:region_name)
   end
 
-  def self.region_uniq_years(name)
-    where(region_name: name).distinct.pluck(:year).sort
+  def self.region_uniq_years(region)
+    where(region_name: region).distinct.pluck(:year).sort
+  end
+
+  def self.region_year_data(region, year)
+    where('region_name = ? AND year = ?', region, year).pluck(:month, :index)
   end
 end

@@ -28,12 +28,21 @@ module House
       { regions: HousePriceIndex.uniq_regions }
     end
 
-    desc 'Dates and indexes from region'
+    desc 'Years available from the region'
     params do
       requires :name, type: String, desc: 'Name of the region'
     end
     get '/region' do
       { years: HousePriceIndex.region_uniq_years(params[:name]) }
+    end
+
+    desc 'Months and indexes available from the year'
+    params do
+      requires :region_name, type: String, desc: 'Name of the region'
+      requires :number, type: Integer, desc: 'Number of the year'
+    end
+    get '/region/year' do
+      { data: HousePriceIndex.region_year_data(params[:region_name], params[:number]) }
     end
   end
 end
