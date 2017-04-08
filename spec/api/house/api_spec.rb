@@ -5,8 +5,18 @@ describe House::API, type: :request do
   let(:region_name) { 'Aberdeenshire' }
   let(:index) { 58.35313548 }
 
-  describe 'GET /regions' do
-    
+  describe 'GET /region' do
+    let!(:hpi_1) { HousePriceIndex.create(date: '2005-09-01', region_name: region_name, index: index, year: 2005) }
+    let!(:hpi_2) { HousePriceIndex.create(date: '2005-10-01', region_name: region_name, index: index, year: 2005) }
+    let!(:hpi_3) { HousePriceIndex.create(date: '2006-09-01', region_name: region_name, index: index, year: 2006) }
+
+    it 'returns uniq years for the region' do
+      get '/region', params: { name: region_name }
+      hash_response = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(hash_response['years'].count).to eq(2)
+    end
   end
   
   describe 'GET /hpi/count' do

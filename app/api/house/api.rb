@@ -1,11 +1,6 @@
 module House
   class API < Grape::API
     format :json
-    helpers do
-      def region
-        @region ||= HousePriceIndex.where(region_name: params[:name])
-      end
-    end
 
     desc 'Creates house price index'
     params do
@@ -38,7 +33,7 @@ module House
       requires :name, type: String, desc: 'Name of the region'
     end
     get '/region' do
-      { years: region }
+      { years: HousePriceIndex.region_uniq_years(params[:name]) }
     end
   end
 end
