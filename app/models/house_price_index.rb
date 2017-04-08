@@ -6,6 +6,6 @@ class HousePriceIndex < ApplicationRecord
   end
 
   def self.region_uniq_years(name)
-    where(region_name: name).distinct.pluck(:year)
+    where(region_name: name).distinct.pluck(:year).sort
   end
 end
