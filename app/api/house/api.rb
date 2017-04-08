@@ -14,8 +14,8 @@ module House
       requires :index, type: Float, desc: 'House price index value'
     end
     post '/hpi' do
-      # find or create...
-      HousePriceIndex.create!(date: params[:date], region_name: params[:region_name], index: params[:index])
+      hpi = HousePriceIndex.create!(date: params[:date], region_name: params[:region_name], index: params[:index])
+      hpi.update_attributes(year: hpi.date.year, month: Date::MONTHNAMES[hpi.date.month])
     end
 
     desc 'List of all HPI in the DB'

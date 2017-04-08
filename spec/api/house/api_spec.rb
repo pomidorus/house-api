@@ -26,6 +26,8 @@ describe House::API, type: :request do
 
       expect(response.status).to eq(201)
       expect(HousePriceIndex.count).to eq(1)
+      expect(HousePriceIndex.first.year).to eq(2005)
+      expect(HousePriceIndex.first.month).to eq('September')
     end
   end
 end

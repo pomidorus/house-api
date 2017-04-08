@@ -12,8 +12,6 @@ RSpec.describe HousePriceIndex, type: :model do
 
   it 'contains valid attributes' do
     expect(@hpi).to have_attributes(region_name: region_name)
-    expect(@hpi.year).to eq(2005)
-    expect(@hpi.month).to eq('September')
   end
 
   describe '#uniq_regions' do
