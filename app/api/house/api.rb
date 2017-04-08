@@ -14,7 +14,7 @@ module House
     end
 
     desc 'House price indexes total count'
-    get '/hpi' do
+    get '/hpi/count' do
       { hpi_count: HousePriceIndex.count }
     end
 
